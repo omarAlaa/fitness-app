@@ -1,17 +1,9 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Redirect } from "expo-router";
 
-export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+import { getAuthHome } from "@/features/auth/auth-state";
+import { useAuth } from "@/features/auth/auth-provider";
+
+export default function IndexRoute() {
+  const { status } = useAuth();
+  return <Redirect href={getAuthHome(status)} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
